@@ -5,7 +5,7 @@
 	<packaging>jar</packaging>
 	<name>Groovy Shell Server</name>
 	<parent>
-		<groupId>me.bazhenov.groovy-shell</groupId>
+		<groupId>com.insight.groovy-shell</groupId>
 		<artifactId>groovy-shell-parent</artifactId>
 		<version>1.8-SNAPSHOT</version>
 	</parent>
