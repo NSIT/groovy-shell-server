@@ -30,7 +30,42 @@
 		<dependency>
 			<groupId>org.apache.sshd</groupId>
 			<artifactId>sshd-core</artifactId>
-			<version>0.11.0</version>
+			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<shadedArtifactAttached>false</shadedArtifactAttached>
+							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<dependencyReducedPomLocation>${basedir}/target/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+							<createSourcesJar>true</createSourcesJar>
+							<artifactSet>
+								<includes>
+									<include>org.apache.sshd:sshd-core</include>
+								</includes>
+							</artifactSet>
+							<relocations>
+								<relocation>
+									<pattern>org.apache.sshd</pattern>
+									<shadedPattern>me.bazhenov.groovysh.sshd</shadedPattern>
+								</relocation>
+							</relocations>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
