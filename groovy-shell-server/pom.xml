@@ -52,10 +52,15 @@
 							<createSourcesJar>true</createSourcesJar>
 							<artifactSet>
 								<includes>
+									<include>jline:jline</include>
 									<include>org.apache.sshd:sshd-core</include>
 								</includes>
 							</artifactSet>
 							<relocations>
+								<relocation>
+									<pattern>jline</pattern>
+									<shadedPattern>me.bazhenov.groovysh.jline</shadedPattern>
+								</relocation>
 								<relocation>
 									<pattern>org.apache.sshd</pattern>
 									<shadedPattern>me.bazhenov.groovysh.sshd</shadedPattern>
